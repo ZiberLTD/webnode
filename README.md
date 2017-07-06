@@ -28,7 +28,7 @@ at /etc/apache2/apache2.conf:
 4) Restart Apache web server:
 service apache2 restart
 
-5) upload via ftp node directory
+5) Upload via ftp node directory
 
 6) Change permissions for installer may write config 
 chmod -R 777 /var/www/html/node/
