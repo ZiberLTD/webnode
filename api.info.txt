@@ -1,0 +1,60 @@
+=====================================
+-------------API METHODS-------------
+=====================================
+
+*************************************
+Client First Auth (as Guest):
+url: http://ziber.loc/auth_client/
+method: HTTP GET/POST
+
+requested fields:
+chain_addr: BTC or ETH chain address (ex: 0x93B73F00e8C64BebDfE11d3f9456a656313022A6)
+chain_type: BTC/ETH
+
+returns:
+json {
+    "success": true,
+    "uid": "a3029d4bf7f174b07890cb356519f2ec5dbfb842",
+    "confirm_address": "0xe1eaa5eaa6fe0daff7231e7bcb8530bdfde9d0ab",
+    "confirm_address_private_key": "744675e8aa121cc6215e5ffa1e608afbe1fe38e180e2c5932e8cd92cf9c89a46",
+    "confirm_address_public_key": "04747ac0bb55dac32aa2dc4c66a236eed7ff579c422a0c62cb083e8f27eb86001724515eb90341f23df83c680f51300871d3053c9cce3bc78c0dfa8a7646ac95b2"
+}
+*************************************
+Client Confirmation:
+url: http://ziber.loc/confirm_client/
+method: HTTP GET/POST
+
+requested fields:
+uid: UID returned by "Client First Auth" (ex: a3029d4bf7f174b07890cb356519f2ec5dbfb842)
+
+returns:
+json {
+	"success": true,
+	"account": "e1eaa5eaa6fe0daff7231e7bcb8530bdfde9d0ab",
+	"account_key": "8d35523a1fdb02209361349636c581144682f2f5"
+}
+*************************************
+On Task Complete:
+url: http://ziber.loc/taskcomplete/
+method: HTTP GET/POST
+
+requested fields:
+account: account(uid) returned by "Client Confirmation"
+account_key: secret key returned by "Client Confirmation"
+task_id: returned by "Ping"
+
+returns:
+json {
+    "success": true,
+}
+*************************************
+Refreshing Balances:
+url: http://ziber.loc/refresh_balances/
+method: HTTP GET/POST
+
+requested fields:
+no fields requested
+
+returns:
+void
+*************************************

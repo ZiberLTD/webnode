@@ -1,0 +1,2 @@
+<?php
+logout_user();
